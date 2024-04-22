@@ -1,0 +1,691 @@
+
+{% extends "_base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% load static %}
+    
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Подписки</h2>
+          <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">История ваших подписок</p>
+          {% if user_subscription_plan %}
+              <span class="bg-green-100 text-green-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{% trans 'Подписка активна:' %} {{ user_subscription_plan.plan.name }} {% trans 'до' %} {{ user_subscription_plan.end_date }}</span>
+          {% else %}
+              <span class="bg-pink-100 text-pink-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">{% trans 'Подписка истекла' %}</span>
+          {% endif %}
+      </div>
+      <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+          <!-- Pricing Card -->
+          <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <h3 class="mb-4 text-2xl font-semibold">Basic</h3>
+              <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Лучший вариант для начинающих предпринимателей</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-extrabold">$19</span>
+                  <span class="text-gray-500 dark:text-gray-400">/месяц</span>
+              </div>
+              <!-- List -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>100 чатов</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span><span class="font-semibold">До 5 документов</span> с информацией вашей компании</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Аналитика продаж</span></span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Тех. поддержка</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Интеграция с Telegram, виджет на сайт</span>
+                  </li>
+              </ul>
+              
+              <input data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="btn text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900" value="Подписаться" type="button">
+          </div>
+          <!-- Pricing Card -->
+          <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-white bg-primary-700 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <h3 class="mb-4 text-2xl font-semibold">Professional</h3>
+              <p class="font-light text-gray-300 sm:text-lg dark:text-gray-400">Идеальное решение для малого бизнеса</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-extrabold">$35</span>
+                  <span class="text-gray-300 dark:text-gray-400">/месяц</span>
+              </div>
+              <!-- List -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>500 чатов</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span><span class="font-semibold">До 10 документов</span> с информацией вашей компании</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Аналитика продаж</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Тех. поддержка</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Интеграция с Telegram, виджет на сайт</span>
+                  </li>
+              </ul>
+              <a href="#" class="text-primary-700 bg-white hover:bg-gray-300 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Подписаться</a>
+          </div>
+          <!-- Pricing Card -->
+          <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <h3 class="mb-4 text-2xl font-semibold">Enterprise</h3>
+              <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Корпоративная подписка для крупного бизнеса</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-extrabold">$59</span>
+                  <span class="text-gray-500 dark:text-gray-400">/месяц</span>
+              </div>
+              <!-- List -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>1000 чатов</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span><span class="font-semibold">До 15 документов</span> с информацией вашей компании</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Аналитика продаж</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Тех. поддержка</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Интеграция с Telegram, виджет на сайт</span>
+                  </li>
+              </ul>
+              <a href="#" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Подписаться</a>
+          </div>
+          <div class="col-span-3 grid grid-cols-2 p-6 mx-auto text-center bg-gray-100 rounded-lg w-full border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <div class="text-left mr-6">
+                  <h3 class="mb-4 text-2xl font-semibold">Рассчитать индивидуальный тариф</h3>
+                  <p class="font-light  text-gray-700 sm:text-lg dark:text-gray-400">Если у вашего бизнеса есть индивидуальные потребности,
+                  которые не помещаются в рамках предоставленных тарифов, вы можете оставить нам заявку и мы рассчитаем вас
+                  по выгодному вам тарифу!</p>
+              </div>
+              <div class="ml-12">
+                  <script data-b24-form="inline/9/g1shwj" data-skip-moving="true">
+                      (function(w,d,u){
+                          var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
+                          var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+                      })(window,document,'https://cdn-ru.bitrix24.ru/b29290054/crm/form/loader_9.js');
+                  </script>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Main modal -->
+  <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-screen w-screen m-auto mt-8">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="max-w-md mx-auto mt-8 bg-white rounded-md shadow-md overflow-hidden">
+                <div class="px-6 py-4 bg-gray-900 text-white">
+                    <h1 class="text-lg font-bold">Credit Card</h1>
+                </div>
+ 
+
+                <form class="p-4 md:p-5 mb-0" id="paymentFormSample" autocomplete="off">
+                    <div class="px-6 py-4">
+                        <div class="flex gap-4 mb-4">
+                            <button class="w-full flex items-center justify-center bg-gray-200 hover:bg-blue-600 text-black font-bold py-3 px-4 text-xl rounded-lg" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="20px" height="20px">    <path d="M25.565,9.785c-0.123,0.077-3.051,1.702-3.051,5.305c0.138,4.109,3.695,5.55,3.756,5.55 c-0.061,0.077-0.537,1.963-1.947,3.94C23.204,26.283,21.962,28,20.076,28c-1.794,0-2.438-1.135-4.508-1.135 c-2.223,0-2.852,1.135-4.554,1.135c-1.886,0-3.22-1.809-4.4-3.496c-1.533-2.208-2.836-5.673-2.882-9 c-0.031-1.763,0.307-3.496,1.165-4.968c1.211-2.055,3.373-3.45,5.734-3.496c1.809-0.061,3.419,1.242,4.523,1.242 c1.058,0,3.036-1.242,5.274-1.242C21.394,7.041,23.97,7.332,25.565,9.785z M15.001,6.688c-0.322-1.61,0.567-3.22,1.395-4.247 c1.058-1.242,2.729-2.085,4.17-2.085c0.092,1.61-0.491,3.189-1.533,4.339C18.098,5.937,16.488,6.872,15.001,6.688z"/></svg>                  
+                                Pay
+                            </button>
+                            <button class="w-full flex items-center justify-center bg-gray-200 text-gray-500 font-normal py-3 px-4 text-xl rounded-lg" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px"><path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+                                Pay
+                            </button>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="cardholder-name" >
+                                Cardholder Name
+                            </label>
+                            <input
+                                class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="Full Name" id="cardholder-name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="card-number">
+                                Card Number
+                            </label>
+                            <input
+                                class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="card-number" type="text" placeholder="**** **** **** ****" required>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-full mb-4">
+                                <label class="block text-gray-700 font-bold mb-2" for="expiration-date">
+                                    Expiration Date
+                                </label>
+                                <input
+                                    class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="expiration-date" type="text" placeholder="MM/YY" required>
+                            </div>
+    
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-bold mb-2" for="cvv">
+                                    CVV
+                                </label>
+                                <input
+                                    class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="cvv" type="passowrd" placeholder="***" data-cp="cvv" required>
+                            </div>
+                        </div>
+                        <button class="w-full mt-2 bg-gray-900 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg" 
+                                id="payButton-19">
+                            Pay Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+</section>
+
+<script>
+    let btn = document.getElementById("payButton-19");
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+    function sendPaymentInfoToDjango(paymentInfo) {
+        fetch('/subscription/process-payment-info/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            // body: `payment_info=${encodeURIComponent(paymentInfo)}&additional_info=${encodeURIComponent(additionalInfo)}&user_id=${encodeURIComponent(userId)}`
+            body: `paymentInfo=${paymentInfo}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    
+    const checkout = new cp.Checkout({
+        publicId: 'pk_2155ae496dc890b777ebc0c21becb'
+    });
+    
+    function pay() {
+        var cardNumber = document.getElementById('card-number').value;
+        var expirationDate = (document.getElementById('expiration-date').value).split("/");
+        var month = expirationDate[0];
+        var year = expirationDate[1];
+        var cvv = document.getElementById('cvv').value;
+    
+        const fieldValues = {
+            cvv: cvv,
+            cardNumber: cardNumber,
+            expDateMonth: month,
+            expDateYear: year,
+        }
+    
+        checkout.createPaymentCryptogram(fieldValues)
+            .then((cryptogram) => {
+                console.log(cryptogram);
+                sendPaymentInfoToDjango(cryptogram)
+            }).catch((errors) => {
+                console.log(errors)
+                sendPaymentInfoToDjango(errors)
+            });
+    }
+    
+    btn.addEventListener('click', pay)
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var expirationInput = document.getElementById('expiration-date');
+    
+        expirationInput.addEventListener('input', function() {
+            var value = expirationInput.value;
+    
+            // Remove all non-digits and then reformat, this ensures user can't enter non-digit characters
+            var numericValue = value.replace(/\D/g, '');
+    
+            // Check if we need to add a slash
+            if (numericValue.length > 2) {
+                numericValue = numericValue.substring(0, 2) + '/' + numericValue.substring(2);
+            }
+            
+            numericValue = numericValue.substring(0, 5);
+    
+            // Update the value only if it's different to avoid caret position issues
+            if (value !== numericValue) {
+                expirationInput.value = numericValue;
+            }
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var cardInput = document.getElementById('card-number');
+
+        cardInput.addEventListener('input', function() {
+            var value = cardInput.value;
+
+            // Remove all non-digit characters
+            var numericValue = value.replace(/\D/g, '');
+            numericValue = numericValue.substring(0, 16);
+
+            // Insert space after every 4 digits
+            var cardFormat = numericValue.replace(/(\d{4})(?=\d)/g, '$1 ');
+            
+
+            // Update the value only if it's different to avoid caret position issues
+            if (value !== cardFormat) {
+                cardInput.value = cardFormat;
+            }
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var cardInput = document.getElementById('cvv');
+
+        cardInput.addEventListener('input', function() {
+            var value = cardInput.value;
+            var numericValue = value.replace(/\D/g, '');
+            var cardFormat = numericValue.substring(0, 3);
+            
+            
+            // Update the value only if it's different to avoid caret position issues
+            if (value !== cardFormat) {
+                cardInput.value = cardFormat;
+            }
+        });
+    });
+</script>
+{% endblock content %}
+{% extends "_base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% load static %}
+    
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Подписки</h2>
+          <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">История ваших подписок</p>
+          {% if user_subscription_plan %}
+              <span class="bg-green-100 text-green-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{% trans 'Подписка активна:' %} {{ user_subscription_plan.plan.name }} {% trans 'до' %} {{ user_subscription_plan.end_date }}</span>
+          {% else %}
+              <span class="bg-pink-100 text-pink-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">{% trans 'Подписка истекла' %}</span>
+          {% endif %}
+      </div>
+      <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+          <!-- Pricing Card -->
+          <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <h3 class="mb-4 text-2xl font-semibold">Basic</h3>
+              <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Лучший вариант для начинающих предпринимателей</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-extrabold">$19</span>
+                  <span class="text-gray-500 dark:text-gray-400">/месяц</span>
+              </div>
+              <!-- List -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>100 чатов</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span><span class="font-semibold">До 5 документов</span> с информацией вашей компании</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Аналитика продаж</span></span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Тех. поддержка</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Интеграция с Telegram, виджет на сайт</span>
+                  </li>
+              </ul>
+              
+              <input data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="btn text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900" value="Подписаться" type="button">
+          </div>
+          <!-- Pricing Card -->
+          <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-white bg-primary-700 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <h3 class="mb-4 text-2xl font-semibold">Professional</h3>
+              <p class="font-light text-gray-300 sm:text-lg dark:text-gray-400">Идеальное решение для малого бизнеса</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-extrabold">$35</span>
+                  <span class="text-gray-300 dark:text-gray-400">/месяц</span>
+              </div>
+              <!-- List -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>500 чатов</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span><span class="font-semibold">До 10 документов</span> с информацией вашей компании</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Аналитика продаж</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Тех. поддержка</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Интеграция с Telegram, виджет на сайт</span>
+                  </li>
+              </ul>
+              <a href="#" class="text-primary-700 bg-white hover:bg-gray-300 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Подписаться</a>
+          </div>
+          <!-- Pricing Card -->
+          <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <h3 class="mb-4 text-2xl font-semibold">Enterprise</h3>
+              <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Корпоративная подписка для крупного бизнеса</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-extrabold">$59</span>
+                  <span class="text-gray-500 dark:text-gray-400">/месяц</span>
+              </div>
+              <!-- List -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>1000 чатов</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span><span class="font-semibold">До 15 документов</span> с информацией вашей компании</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Аналитика продаж</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Тех. поддержка</span>
+                  </li>
+                  <li class="flex items-center space-x-3">
+                      <!-- Icon -->
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Интеграция с Telegram, виджет на сайт</span>
+                  </li>
+              </ul>
+              <a href="#" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Подписаться</a>
+          </div>
+          <div class="col-span-3 grid grid-cols-2 p-6 mx-auto text-center bg-gray-100 rounded-lg w-full border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <div class="text-left mr-6">
+                  <h3 class="mb-4 text-2xl font-semibold">Рассчитать индивидуальный тариф</h3>
+                  <p class="font-light  text-gray-700 sm:text-lg dark:text-gray-400">Если у вашего бизнеса есть индивидуальные потребности,
+                  которые не помещаются в рамках предоставленных тарифов, вы можете оставить нам заявку и мы рассчитаем вас
+                  по выгодному вам тарифу!</p>
+              </div>
+              <div class="ml-12">
+                  <script data-b24-form="inline/9/g1shwj" data-skip-moving="true">
+                      (function(w,d,u){
+                          var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
+                          var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+                      })(window,document,'https://cdn-ru.bitrix24.ru/b29290054/crm/form/loader_9.js');
+                  </script>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Main modal -->
+  <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-screen w-screen m-auto mt-8">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="max-w-md mx-auto mt-8 bg-white rounded-md shadow-md overflow-hidden">
+                <div class="px-6 py-4 bg-gray-900 text-white">
+                    <h1 class="text-lg font-bold">Credit Card</h1>
+                </div>
+ 
+
+                <form class="p-4 md:p-5 mb-0" id="paymentFormSample" autocomplete="off">
+                    <div class="px-6 py-4">
+                        <div class="flex gap-4 mb-4">
+                            <button class="w-full flex items-center justify-center bg-gray-200 hover:bg-blue-600 text-black font-bold py-3 px-4 text-xl rounded-lg" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="20px" height="20px">    <path d="M25.565,9.785c-0.123,0.077-3.051,1.702-3.051,5.305c0.138,4.109,3.695,5.55,3.756,5.55 c-0.061,0.077-0.537,1.963-1.947,3.94C23.204,26.283,21.962,28,20.076,28c-1.794,0-2.438-1.135-4.508-1.135 c-2.223,0-2.852,1.135-4.554,1.135c-1.886,0-3.22-1.809-4.4-3.496c-1.533-2.208-2.836-5.673-2.882-9 c-0.031-1.763,0.307-3.496,1.165-4.968c1.211-2.055,3.373-3.45,5.734-3.496c1.809-0.061,3.419,1.242,4.523,1.242 c1.058,0,3.036-1.242,5.274-1.242C21.394,7.041,23.97,7.332,25.565,9.785z M15.001,6.688c-0.322-1.61,0.567-3.22,1.395-4.247 c1.058-1.242,2.729-2.085,4.17-2.085c0.092,1.61-0.491,3.189-1.533,4.339C18.098,5.937,16.488,6.872,15.001,6.688z"/></svg>                  
+                                Pay
+                            </button>
+                            <button class="w-full flex items-center justify-center bg-gray-200 text-gray-500 font-normal py-3 px-4 text-xl rounded-lg" disabled>
+                                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px"><path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+                                Pay
+                            </button>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="cardholder-name" >
+                                Cardholder Name
+                            </label>
+                            <input
+                                class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="Full Name" id="cardholder-name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="card-number">
+                                Card Number
+                            </label>
+                            <input
+                                class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="card-number" type="text" placeholder="**** **** **** ****" required>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-full mb-4">
+                                <label class="block text-gray-700 font-bold mb-2" for="expiration-date">
+                                    Expiration Date
+                                </label>
+                                <input
+                                    class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="expiration-date" type="text" placeholder="MM/YY" required>
+                            </div>
+    
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-bold mb-2" for="cvv">
+                                    CVV
+                                </label>
+                                <input
+                                    class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="cvv" type="passowrd" placeholder="***" data-cp="cvv" required>
+                            </div>
+                        </div>
+                        <button class="w-full mt-2 bg-gray-900 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg" 
+                                id="payButton-19">
+                            Pay Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+</section>
+
+<script>
+    let btn = document.getElementById("payButton-19");
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+    function sendPaymentInfoToDjango(paymentInfo) {
+        fetch('/subscription/process-payment-info/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            // body: `payment_info=${encodeURIComponent(paymentInfo)}&additional_info=${encodeURIComponent(additionalInfo)}&user_id=${encodeURIComponent(userId)}`
+            body: `paymentInfo=${paymentInfo}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    
+    const checkout = new cp.Checkout({
+        publicId: 'pk_2155ae496dc890b777ebc0c21becb'
+    });
+    
+    function pay() {
+        var cardNumber = document.getElementById('card-number').value;
+        var expirationDate = (document.getElementById('expiration-date').value).split("/");
+        var month = expirationDate[0];
+        var year = expirationDate[1];
+        var cvv = document.getElementById('cvv').value;
+    
+        const fieldValues = {
+            cvv: cvv,
+            cardNumber: cardNumber,
+            expDateMonth: month,
+            expDateYear: year,
+        }
+    
+        checkout.createPaymentCryptogram(fieldValues)
+            .then((cryptogram) => {
+                console.log(cryptogram);
+                sendPaymentInfoToDjango(cryptogram)
+            }).catch((errors) => {
+                console.log(errors)
+                sendPaymentInfoToDjango(errors)
+            });
+    }
+    
+    btn.addEventListener('click', pay)
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var expirationInput = document.getElementById('expiration-date');
+    
+        expirationInput.addEventListener('input', function() {
+            var value = expirationInput.value;
+    
+            // Remove all non-digits and then reformat, this ensures user can't enter non-digit characters
+            var numericValue = value.replace(/\D/g, '');
+    
+            // Check if we need to add a slash
+            if (numericValue.length > 2) {
+                numericValue = numericValue.substring(0, 2) + '/' + numericValue.substring(2);
+            }
+            
+            numericValue = numericValue.substring(0, 5);
+    
+            // Update the value only if it's different to avoid caret position issues
+            if (value !== numericValue) {
+                expirationInput.value = numericValue;
+            }
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var cardInput = document.getElementById('card-number');
+
+        cardInput.addEventListener('input', function() {
+            var value = cardInput.value;
+
+            // Remove all non-digit characters
+            var numericValue = value.replace(/\D/g, '');
+            numericValue = numericValue.substring(0, 16);
+
+            // Insert space after every 4 digits
+            var cardFormat = numericValue.replace(/(\d{4})(?=\d)/g, '$1 ');
+            
+
+            // Update the value only if it's different to avoid caret position issues
+            if (value !== cardFormat) {
+                cardInput.value = cardFormat;
+            }
+        });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var cardInput = document.getElementById('cvv');
+
+        cardInput.addEventListener('input', function() {
+            var value = cardInput.value;
+            var numericValue = value.replace(/\D/g, '');
+            var cardFormat = numericValue.substring(0, 3);
+            
+            
+            // Update the value only if it's different to avoid caret position issues
+            if (value !== cardFormat) {
+                cardInput.value = cardFormat;
+            }
+        });
+    });
+</script>
+{% endblock content %}
